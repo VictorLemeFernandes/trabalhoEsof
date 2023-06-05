@@ -7,20 +7,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import trabalhoScrum.api.dev.DadosCadastroDev;
-import trabalhoScrum.api.dev.Dev;
-import trabalhoScrum.api.dev.DevRepository;
+import trabalhoScrum.api.usuario.DadosCadastroUsuario;
+import trabalhoScrum.api.usuario.Usuario;
+import trabalhoScrum.api.usuario.UsuarioRepository;
 
 @RestController
-@RequestMapping("/devs")
-public class DevsController {
+@RequestMapping("/users")
+public class UserController {
     @Autowired
-    private DevRepository repository;
+    private UsuarioRepository repository;
 
     @Transactional
     @PostMapping
-    public void cadastrar(@Valid @RequestBody DadosCadastroDev dados) {
-        repository.save(new Dev(dados));
+    public void cadastrar(@Valid @RequestBody DadosCadastroUsuario dados) {
+        repository.save(new Usuario(dados));
     }
-
 }
