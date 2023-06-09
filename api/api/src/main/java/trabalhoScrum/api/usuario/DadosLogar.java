@@ -2,11 +2,10 @@ package trabalhoScrum.api.usuario;
 
 import jakarta.validation.constraints.NotNull;
 
-public record DadosAtualizacaoUsuario(
+public record DadosLogar (
     @NotNull
     String email,
 
-    String senha,
-    
-    Cargo cargo
+    @NotNull
+    String senha
 ){}
