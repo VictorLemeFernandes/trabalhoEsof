@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import trabalhoScrum.api.usuario.DadosAtualizacaoUsuario;
-import trabalhoScrum.api.usuario.DadosCadastroUsuario;
-import trabalhoScrum.api.usuario.DadosLogar;
+import trabalhoScrum.api.dto.DadosAtualizacaoUsuario;
+import trabalhoScrum.api.dto.DadosCadastroUsuario;
+import trabalhoScrum.api.dto.DadosLogar;
 import trabalhoScrum.api.usuario.Usuario;
 import trabalhoScrum.api.usuario.UsuarioRepository;
 
@@ -29,15 +29,17 @@ public class UserController {
     }
 
     @GetMapping
-    public boolean logar(@RequestBody @Valid DadosLogar dados){
+    public Long logar(@RequestBody @Valid DadosLogar dados){
         var usr = repository.findByEmail(dados.email());
-        System.out.println(usr);
 
-        if (!usr.isEmpty() && usr.get(0).getSenha().equals(dados.senha())){
-            return true;
+        if (!usr.isEmpty()){
+            if(usr.get(0).getSenha().equals(dados.senha())){
+                return usr.get(0).getId();
+            }else{
+                return (long) -1;
+            }
         }
-        return false;
-
+        return (long) 0;
     }
 
     @PutMapping

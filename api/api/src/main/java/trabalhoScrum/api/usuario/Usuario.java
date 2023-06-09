@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import trabalhoScrum.api.dto.DadosAtualizacaoUsuario;
+import trabalhoScrum.api.dto.DadosCadastroUsuario;
 
 @Table(name = "usuarios")
 @Entity(name = "Usuario")

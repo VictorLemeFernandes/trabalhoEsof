@@ -1,4 +1,4 @@
-package trabalhoScrum.api.usuario;
+package trabalhoScrum.api.dto;
 
 import jakarta.validation.constraints.NotNull;
 
