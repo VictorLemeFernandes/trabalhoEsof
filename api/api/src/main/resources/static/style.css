@@ -31,7 +31,8 @@
     justify-content: center;
 }
 
-#inputs {
+#inputs,
+#register {
     font-size: small;
     display: flex;
     flex-direction: column;
@@ -48,6 +49,11 @@
 
 .input-field input:focus {
     outline: none;
+}
+
+.cargos {
+    display: flex;
+    gap: 7px;
 }
 
 #login_button {
