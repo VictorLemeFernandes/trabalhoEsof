@@ -30,4 +30,14 @@ public class Usuario {
         this.cpf = dados.cpf();
         this.cargo = dados.cargo();
     }
+
+    public void atualizaDadosUsuario(DadosAtualizacaoUsuario dados){
+        if(dados.cargo() != null){
+            this.cargo = dados.cargo(); 
+        }
+
+        if(dados.senha() != null){
+            this.senha = dados.senha(); 
+        }
+    }
 }

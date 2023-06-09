@@ -4,9 +4,12 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import trabalhoScrum.api.usuario.DadosAtualizacaoUsuario;
 import trabalhoScrum.api.usuario.DadosCadastroUsuario;
 import trabalhoScrum.api.usuario.Usuario;
 import trabalhoScrum.api.usuario.UsuarioRepository;
@@ -21,5 +24,12 @@ public class UserController {
     @PostMapping
     public void cadastrar(@Valid @RequestBody DadosCadastroUsuario dados) {
         repository.save(new Usuario(dados));
+    }
+
+    @PutMapping
+    @Transactional
+    public void atualizar(@RequestBody @Valid DadosAtualizacaoUsuario dados){
+        var usr = repository.getReferenceById(dados.id());
+        usr.atualizaDadosUsuario(dados);
     }
 }
