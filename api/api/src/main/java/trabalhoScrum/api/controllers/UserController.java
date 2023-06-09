@@ -28,7 +28,7 @@ public class UserController {
         repository.save(new Usuario(dados));
     }
 
-    @GetMapping
+    @GetMapping("/login")
     public Long logar(@RequestBody @Valid DadosLogar dados){
         var usr = repository.findByEmail(dados.email());
 
