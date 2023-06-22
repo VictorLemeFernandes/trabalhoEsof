@@ -3,11 +3,14 @@ package trabalhoScrum.api.controllers;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import trabalhoScrum.api.dto.DadosAtualizacaoUsuario;
@@ -23,23 +26,24 @@ public class UserController {
     private UsuarioRepository repository;
 
     @Transactional
-    @PostMapping
+    @PostMapping("/cadastrar")
     public void cadastrar(@Valid @RequestBody DadosCadastroUsuario dados) {
         repository.save(new Usuario(dados));
     }
 
-    @GetMapping("/login")
-    public Long logar(@RequestBody @Valid DadosLogar dados){
+    @PostMapping("/logar")
+    public ResponseEntity<Long> logar(@RequestBody DadosLogar dados){
         var usr = repository.findByEmail(dados.email());
-
+        
         if (!usr.isEmpty()){
+            System.out.println("Cheguei aqui");
             if(usr.get(0).getSenha().equals(dados.senha())){
-                return usr.get(0).getId();
+                return ResponseEntity.ok(usr.get(0).getId());
             }else{
-                return (long) -1;
+                return ResponseEntity.ok((long) -1);
             }
         }
-        return (long) 0;
+        return ResponseEntity.ok((long) 0);
     }
 
     @PutMapping
