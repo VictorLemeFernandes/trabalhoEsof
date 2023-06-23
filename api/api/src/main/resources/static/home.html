@@ -10,15 +10,35 @@
 </head>
 
 <body>
+
     <main id="container">
-        <h1 hidden="true" id="teste"></h1>
+        <button hidden="true" id="cadastrar-requisito" onclick="openModal()">Cadastrar requisito</button>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2 class="modal-header">Cadastro de requisito</h2>
+                <form class="modal-form">
+                    <label for="titulo">Título:</label>
+                    <input type="text" id="titulo" name="titulo" required>
+
+                    <label for="email-funcionario">Email do funcionário:</label>
+                    <input type="text" id="email-funcionario" name="email-funcionario" required>
+
+                    <label for="conteudo">Conteúdo:</label>
+                    <textarea id="conteudo" name="conteudo" required></textarea>
+
+                    <button id="enviar-requisito">Enviar</button>
+                </form>
+
+            </div>
+        </div>
         <div id="requisitos">
 
-            <button onclick="mostraDados()">teste</button>
 
         </div>
     </main>
 </body>
 
 <script src="home.js"></script>
+
 </html>
