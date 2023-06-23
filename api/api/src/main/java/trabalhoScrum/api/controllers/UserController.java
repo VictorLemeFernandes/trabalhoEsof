@@ -3,13 +3,8 @@ package trabalhoScrum.api.controllers;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import trabalhoScrum.api.dto.DadosAtualizacaoUsuario;
 import trabalhoScrum.api.dto.DadosCadastroUsuario;
-import trabalhoScrum.api.dto.DadosLogar;
 import trabalhoScrum.api.usuario.Usuario;
 import trabalhoScrum.api.usuario.UsuarioRepository;
 
@@ -26,19 +21,18 @@ public class UserController {
         repository.save(new Usuario(dados));
     }
 
-    @GetMapping("/login") // PRECISAMOS CONSERTAR
-    public void logar(@RequestBody DadosLogar dados) {
-        var usr = repository.findByEmail(dados.email());
-
-//        if (!usr.isEmpty()){
-//            if(usr.get(0).getSenha().equals(dados.senha())){
-//                System.out.println("Oi, deu bom");
-//                return ResponseEntity.ok(usr.get(0).getId());
-//            }else{
-//                return ResponseEntity.ok((long) -1);
-//            }
-//        }
-        repository.getReferenceById(usr.get(0).getId());
+    @GetMapping("/login") // FUNCIONANDO CORRETAMENTE(?)
+    public long logar(@RequestParam String email, String senha) {
+        var usr = repository.findByEmail(email);
+        if (!usr.isEmpty()) {
+            if (usr.get(0).getSenha().equals(senha)){
+                return usr.get(0).getId(); // > 0 -> id do usuario
+            } else {
+                return -1; // Senha invalida
+            }
+        } else {
+            return -2; // Email inválido
+        }
     }
 
 //    @PutMapping

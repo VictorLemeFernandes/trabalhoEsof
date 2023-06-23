@@ -3,26 +3,12 @@ function fazerLogin(){
         email: document.querySelector('#user').value,
         senha: document.querySelector('#password').value
     };
-    fetch("http://localhost:8080/users/login",
-        {
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            },
-            method: "POST",
-            body: JSON.stringify(
-                {
-                    email: dadosLogin.email,
-                    senha: dadosLogin.senha
-                }
-            )
+    fetch(`http://localhost:8080/users/login?email=${dadosLogin.email}&senha=${dadosLogin.senha}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
         })
-        .then(function (res){
-            console.log(res);
-        })
-        .catch(function (res) {
-            console.log(res)
-        })
+        .catch(error => {console.error(error)})
 }
 
 function fazerCadastro(){
