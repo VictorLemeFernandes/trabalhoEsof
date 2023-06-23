@@ -5,6 +5,9 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import trabalhoScrum.api.dto.DadosCadastroUsuario;
+import trabalhoScrum.api.requisitos.DadosCadastroRequisitos;
+import trabalhoScrum.api.requisitos.Requisito;
+import trabalhoScrum.api.requisitos.RequisitoRepository;
 import trabalhoScrum.api.usuario.Usuario;
 import trabalhoScrum.api.usuario.UsuarioRepository;
 
@@ -14,6 +17,8 @@ import trabalhoScrum.api.usuario.UsuarioRepository;
 public class UserController {
     @Autowired
     private UsuarioRepository repository;
+    @Autowired
+    private RequisitoRepository requisitoRepository;
 
     @Transactional
     @PostMapping("/cadastrar") // FUNCIONANDO CORRETAMENTE
@@ -33,6 +38,11 @@ public class UserController {
         } else {
             return -2; // Email inválido
         }
+    }
+    @Transactional
+    @PostMapping("/cadastrarRequisito")
+    public void cadastrarRequisito(@Valid @RequestBody DadosCadastroRequisitos dados) {
+        requisitoRepository.save(new Requisito(dados));
     }
 
 //    @PutMapping
