@@ -9,7 +9,8 @@ function fazerLogin(){
             if(data > 0){
                 document.location.href = "home.html";
                 localStorage.setItem("ID",data)
-                console.log(data);
+                localStorage.setItem("EMAIL",dadosLogin.email)
+                localStorage.clear()
             }
             console.log(data);
         })

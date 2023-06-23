@@ -6,8 +6,7 @@ function fazerCadastro(){
         cpf: document.querySelector('#cpf').value,
         cargo: document.querySelector('#cargo').value
     };
-    console.log(dadosCadastro.cargo)
-    console.log(dadosCadastro.nome)
+    
     fetch("http://localhost:8080/users/cadastrar",
         {
             headers: {

@@ -1,14 +1,38 @@
 window.onload = verificaId()
+window.onload = console.log(localStorage)
 
 function criarRequisitos() {
-    fetch('http://localhost:3000/requisitos')
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
+    let dadosCadastro= {
+        idResponsavel: localStorage.getItem("ID"),
+        titulo: document.querySelector('#titulo').value,
+        conteudo: document.querySelector('#conteudo').value,
+        email_funcionario: document.querySelector('#email-funcionario').value,
+        status: document.querySelector('#status').value
+    };
+
+    fetch("http://localhost:8080/users/cadastrarRequisito",
+        {
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            method: "POST",
+            body: JSON.stringify(
+                {
+                    id_responsavel: dadosCadastro.idResponsavel,
+                    titulo: dadosCadastro.titulo,
+                    conteudo: dadosCadastro.conteudo,
+                    email_funcionario: dadosCadastro.email_funcionario,
+                    status: dadosCadastro.status
+                }
+            )
         })
-        .catch(error => {
-            console.error('Erro:', error);
-        });
+        .then(function (res){
+            console.log(res);
+        })
+        .catch(function (res) {
+            console.log(res)
+    })
 }
 
 function verificaId() {
