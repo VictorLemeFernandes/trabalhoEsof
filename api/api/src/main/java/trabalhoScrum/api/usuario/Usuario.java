@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import trabalhoScrum.api.dto.DadosAtualizacaoUsuario;
+import trabalhoScrum.api.dto.DadosCadastroUsuario;
 
 @Table(name = "usuarios")
 @Entity(name = "Usuario")
@@ -29,5 +31,15 @@ public class Usuario {
         this.senha = dados.senha();
         this.cpf = dados.cpf();
         this.cargo = dados.cargo();
+    }
+
+    public void atualizaDadosUsuario(DadosAtualizacaoUsuario dados){
+        if(dados.cargo() != null){
+            this.cargo = dados.cargo(); 
+        }
+
+        if(dados.senha() != null){
+            this.senha = dados.senha(); 
+        }
     }
 }

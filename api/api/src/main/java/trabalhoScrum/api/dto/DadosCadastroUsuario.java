@@ -1,9 +1,10 @@
-package trabalhoScrum.api.usuario;
+package trabalhoScrum.api.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import trabalhoScrum.api.usuario.Cargo;
 
 public record DadosCadastroUsuario(
         @NotBlank
