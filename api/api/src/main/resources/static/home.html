@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main id="container">
+        <button hidden="true" id="cadastrar-requisito" onclick="openModal()">Cadastrar requisito</button>
+        <button onclick="pegarRequisitoCriados()">testseetst</button>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2 class="modal-header">Cadastro de requisito</h2>
+                <form class="modal-form">
+                    <label for="titulo">Título:</label>
+                    <input type="text" id="titulo" name="titulo" required>
+
+                    <label for="email-funcionario">Email do funcionário:</label>
+                    <input type="text" id="email-funcionario" name="email-funcionario" required>
+
+                    <label for="conteudo">Conteúdo:</label>
+                    <textarea id="conteudo" name="conteudo" required></textarea>
+
+                    <label for="status">Status:</label>
+                    <textarea id="status" name="status" required placeholder="INATIVO//ATIVO//FINALIZADO"></textarea>
+
+                    <button id="enviar-requisito" onclick="criarRequisitos()">Enviar</button>
+                </form>
+
+            </div>
+        </div>
+        <div id="requisitos">
+
+
+        </div>
+    </main>
+</body>
+
+<script src="home.js"></script>
+
+</html>
