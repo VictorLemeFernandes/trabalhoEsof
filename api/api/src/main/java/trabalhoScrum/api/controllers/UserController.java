@@ -66,7 +66,6 @@ public class UserController {
     public ArrayList<Requisito> pegarRequisitos(@RequestParam long id) {
         var usr = repository.findById(id).get().getEmail();
         var tam = requisitoRepository.count();
-        System.out.println(tam);
         requisitoRepository.findAll();
         ArrayList <Requisito> retorno = new ArrayList<>();
         for(int i = 1; i <= tam;i++){
