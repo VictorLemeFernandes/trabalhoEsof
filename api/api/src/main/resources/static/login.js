@@ -10,7 +10,6 @@ function fazerLogin(){
                 document.location.href = "home.html";
                 localStorage.setItem("ID",data)
                 localStorage.setItem("EMAIL",dadosLogin.email)
-                localStorage.clear()
             }
             console.log(data);
         })

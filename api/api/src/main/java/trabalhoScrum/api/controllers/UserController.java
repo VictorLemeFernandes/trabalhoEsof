@@ -4,6 +4,7 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
 import java.io.Console;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -61,6 +62,33 @@ public class UserController {
         requisitoRepository.save(new Requisito(dados));
     }
 
+    @GetMapping("/pegarRequisito") // FUNCIONANDO CORRETAMENTE(?)
+    public ArrayList<Requisito> pegarRequisitos(@RequestParam long id) {
+        var usr = repository.findById(id).get().getEmail();
+        var tam = requisitoRepository.count();
+        System.out.println(tam);
+        requisitoRepository.findAll();
+        ArrayList <Requisito> retorno = new ArrayList<>();
+        for(int i = 1; i <= tam;i++){
+            if(requisitoRepository.getReferenceById((long)i).getEmail_funcionario().equals(usr)){
+                retorno.add(requisitoRepository.getReferenceById((long)i));
+            }
+        }
+        return retorno;
+    }
+
+    @GetMapping("/pegarRequisitoCriados") // FUNCIONANDO CORRETAMENTE(?)
+    public ArrayList<Requisito> pegarRequisitosCriados(@RequestParam long id) {;
+        var tam = requisitoRepository.count();
+        requisitoRepository.findAll();
+        ArrayList <Requisito> retorno = new ArrayList<>();
+        for(int i = 1; i <= tam;i++){
+            if(requisitoRepository.getReferenceById((long)i).getId_responsavel() == id){
+                retorno.add(requisitoRepository.getReferenceById((long)i));
+            }
+        }
+        return retorno;
+    }
 //    @PutMapping
 //    @Transactional
 //    public void atualizar(@RequestBody @Valid DadosAtualizacaoUsuario dados){

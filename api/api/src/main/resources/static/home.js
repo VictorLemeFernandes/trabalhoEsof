@@ -1,5 +1,5 @@
 window.onload = verificaId()
-window.onload = console.log(localStorage)
+window.onload = pegarRequisitos()
 
 function criarRequisitos() {
     let dadosCadastro= {
@@ -48,6 +48,26 @@ function verificaId() {
         .catch(error => { console.error(error) })
 }
 
+function pegarRequisitos(){
+    id = localStorage.getItem("ID")
+    fetch(`http://localhost:8080/users/pegarRequisito?id=${id}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+        })
+        .catch(error => { console.error(error) })
+}
+
+function pegarRequisitoCriados(){
+    id = localStorage.getItem("ID")
+    fetch(`http://localhost:8080/users/pegarRequisitoCriados?id=${id}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+        })
+        .catch(error => { console.error(error) })
+}
+
 const openModalBtn = document.getElementById('openModalBtn');
 const modal = document.getElementById('modal');
 const closeBtn = document.getElementsByClassName('close')[0];
@@ -59,7 +79,3 @@ function openModal() {
 function closeModal() {
   modal.style.display = 'none';
 }
-
-openModalBtn.addEventListener('click', openModal);
-
-closeBtn.addEventListener('click', closeModal);
