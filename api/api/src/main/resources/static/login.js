@@ -10,6 +10,10 @@ function fazerLogin(){
                 document.location.href = "home.html";
                 localStorage.setItem("ID",data)
                 localStorage.setItem("EMAIL",dadosLogin.email)
+            }else if(data == -1){
+                alert("Senha inválida")
+            }else if(data == -2){
+                alert("Email não cadastrado")
             }
             console.log(data);
         })

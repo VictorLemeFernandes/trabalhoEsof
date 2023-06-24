@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import trabalhoScrum.api.dto.DadosAtualizacaoRequisitos;
 import trabalhoScrum.api.dto.DadosCadastroUsuario;
 import trabalhoScrum.api.requisitos.DadosCadastroRequisitos;
 import trabalhoScrum.api.requisitos.Requisito;
@@ -88,6 +90,15 @@ public class UserController {
         }
         return retorno;
     }
+
+    @Transactional
+    @PutMapping("/atualizarRequisito")
+    public void atualizar(@Valid @RequestBody DadosAtualizacaoRequisitos dados) {
+        System.out.println("terter");
+        var requisito = requisitoRepository.getReferenceById(dados.id());
+        requisito.atualizarRequisitos(dados);
+    }
+
 //    @PutMapping
 //    @Transactional
 //    public void atualizar(@RequestBody @Valid DadosAtualizacaoUsuario dados){

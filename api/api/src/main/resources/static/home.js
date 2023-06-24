@@ -48,6 +48,7 @@ function verificaId() {
 }
 
 function pegarRequisitos(){
+    var listIds = []
     id = localStorage.getItem("ID")
     fetch(`http://localhost:8080/users/pegarRequisito?id=${id}`)
         .then(response => response.json())
@@ -58,6 +59,7 @@ function pegarRequisitos(){
                 document.querySelector('ul').appendChild(node)
             }else{
                 for(i = 0;i < data.length;i++){
+                    listIds.push(data[i].id)
                     var node = document.createElement('li');
                     node.appendChild(document.createTextNode("Requisito " + (i+1) + " " + data[i].titulo + ":"))
                     node.appendChild(document.createElement("br"))
@@ -71,13 +73,94 @@ function pegarRequisitos(){
                         node.appendChild(document.createTextNode("Comentário: " + data[i].comentario))
                     }
                     
+                    node.appendChild(document.createElement("br"))
+                    node.appendChild(document.createElement("br"))
     
                     document.querySelector('ul').appendChild(node)
                 }
+
+                var btn = document.createElement("button")
+                btn.innerHTML = "Atualizar requisito"
+                btn.onclick = openModal1
+                node.appendChild(btn)
             }  
         })
         .catch(error => { console.error(error) })
 }
+
+function atualizaRequisito(){
+    let dadosAtualizacao= {
+        id: document.querySelector('#id').value,
+        comentario: document.querySelector('#comentario').value,
+        status: document.querySelector('#status').value
+    };
+
+    if(document.querySelector('#status').value == ""){
+        console.log("djfhsdjf")
+        fetch("http://localhost:8080/users/atualizarRequisito",
+        {
+            headers: {
+                "Content-Type": "application/json"
+            },
+            method: "PUT",
+            body: JSON.stringify(
+                {
+                    id: dadosAtualizacao.id,
+                    comentario: dadosAtualizacao.comentario
+                }
+            )
+        })
+        .then(function (res){
+            console.log(res);
+        })
+        .catch(function (res) {
+            console.log(res)
+        })
+    }else if(document.querySelector('#comentario').value == ""){
+        fetch("http://localhost:8080/users/atualizarRequisito",
+        {
+            headers: {
+                "Content-Type": "application/json"
+            },
+            method: "PUT",
+            body: JSON.stringify(
+                {
+                    id: dadosAtualizacao.id,
+                    status: dadosAtualizacao.status
+                }
+            )
+        })
+        .then(function (res){
+            console.log(res);
+        })
+        .catch(function (res) {
+            console.log(res)
+        })
+    }else{
+        fetch("http://localhost:8080/users/atualizarRequisito",
+        {
+            headers: {
+                "Content-Type": "application/json"
+            },
+            method: "PUT",
+            body: JSON.stringify(
+                {
+                    id: dadosAtualizacao.id,
+                    comentario: dadosAtualizacao.comentario,
+                    status: dadosAtualizacao.status
+                }
+            )
+        })
+        .then(function (res){
+            console.log(res);
+        })
+        .catch(function (res) {
+            console.log(res)
+        })  
+    }
+    window.reload()
+}
+
 
 function pegarRequisitoCriados(){
     id = localStorage.getItem("ID")
@@ -91,12 +174,21 @@ function pegarRequisitoCriados(){
 
 const openModalBtn = document.getElementById('openModalBtn');
 const modal = document.getElementById('modal');
+const modal1 = document.getElementById('modal1');
 const closeBtn = document.getElementsByClassName('close')[0];
 
 function openModal() {
   modal.style.display = 'block';
 }
 
+function openModal1() {
+  modal1.style.display = 'block';
+}
+
 function closeModal() {
   modal.style.display = 'none';
+}
+
+function closeModal1() {
+  modal1.style.display = 'none';
 }

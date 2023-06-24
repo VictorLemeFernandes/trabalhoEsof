@@ -35,6 +35,24 @@
 
             </div>
         </div>
+        <div hidden="true" id="modal1" class="modal1">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal1()">&times;</span>
+                <h2 class="modal-header">Atualizar requisito</h2>
+                <form class="modal-form">
+                    <label for="comentario">ID do requisito:</label>
+                    <input type="text" id="id" name="id">
+                    
+                    <label for="comentario">Comentario:</label>
+                    <input type="text" id="comentario" name="comentario">
+
+                    <label for="status">Status:</label>
+                    <input type="text" id="status" name="status" placeholder="INATIVO//ATIVO//FINALIZADO">
+                    <button id="editar-requisito" onclick="atualizaRequisito()">Enviar</button>
+                </form>
+
+            </div>
+        </div>
         <div id="requisitos">
             <h1>Seus requisitos</h1>
             <ul>
