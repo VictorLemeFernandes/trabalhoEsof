@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import trabalhoScrum.api.dto.DadosAtualizacaoRequisitos;
+import trabalhoScrum.api.dto.DadosCadastroRequisitos;
 
 @Table(name = "requisitos")
 @Entity(name = "Requisito")
@@ -30,5 +32,14 @@ public class Requisito {
         this.email_funcionario = dados.email_funcionario();
         this.comentario = dados.comentario();
         this.status = dados.status();
+    }
+
+    public void atualizarRequisitos(DadosAtualizacaoRequisitos dados) {
+        if (dados.comentario() != null) {
+            this.comentario = dados.comentario();
+        }
+        if (dados.status() != null) {
+            this.status = dados.status();
+        }
     }
 }

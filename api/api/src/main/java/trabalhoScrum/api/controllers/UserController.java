@@ -8,8 +8,11 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import trabalhoScrum.api.dto.DadosAtualizacaoRequisitos;
+import trabalhoScrum.api.dto.DadosAtualizacaoUsuario;
+import trabalhoScrum.api.dto.DadosCadastroRequisitos;
 import trabalhoScrum.api.dto.DadosCadastroUsuario;
-import trabalhoScrum.api.requisitos.DadosCadastroRequisitos;
 import trabalhoScrum.api.requisitos.Requisito;
 import trabalhoScrum.api.requisitos.RequisitoRepository;
 import trabalhoScrum.api.usuario.Cargo;
@@ -88,10 +91,18 @@ public class UserController {
         }
         return retorno;
     }
-//    @PutMapping
-//    @Transactional
-//    public void atualizar(@RequestBody @Valid DadosAtualizacaoUsuario dados){
-//        var usr = repository.findByEmail(dados.email());
-//        usr.get(0).atualizaDadosUsuario(dados);
-//    }
+
+    @Transactional
+    @PutMapping("/atualizarRequisito")
+    public void atualizar(@Valid @RequestBody DadosAtualizacaoRequisitos dados) {
+        var requisito = requisitoRepository.getReferenceById(dados.id());
+        requisito.atualizarRequisitos(dados);
+    }
+
+    @Transactional
+    @PutMapping("/atualizarUsuario")
+   public void atualizar(@RequestBody @Valid DadosAtualizacaoUsuario dados){
+       var usr = repository.findByEmail(dados.email());
+       usr.get(0).atualizaDadosUsuario(dados);
+   }
 }
