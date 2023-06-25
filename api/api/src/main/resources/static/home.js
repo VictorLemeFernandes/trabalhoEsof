@@ -61,7 +61,9 @@ function pegarRequisitos(){
                 for(i = 0;i < data.length;i++){
                     listIds.push(data[i].id)
                     var node = document.createElement('li');
-                    node.appendChild(document.createTextNode("Requisito " + (i+1) + " " + data[i].titulo + ":"))
+                    node.appendChild(document.createTextNode("ID requisito: " + data[i].id))
+                    node.appendChild(document.createElement("br"))
+                    node.appendChild(document.createTextNode("Titulo requisito: " + data[i].titulo))
                     node.appendChild(document.createElement("br"))
                     node.appendChild(document.createTextNode("Conteudo: " + data[i].conteudo))
                     node.appendChild(document.createElement("br"))
@@ -90,12 +92,12 @@ function pegarRequisitos(){
 
 function atualizaRequisito(){
     let dadosAtualizacao= {
-        id: document.querySelector('#id').value,
-        comentario: document.querySelector('#comentario').value,
-        status: document.querySelector('#status').value
+        id: document.getElementById('id').value,
+        comentario: document.getElementById('comentario').value,
+        status: document.getElementById('status1').value
     };
 
-    if(document.querySelector('#status').value == ""){
+    if(document.querySelector('#status1').value == ""){
         console.log("djfhsdjf")
         fetch("http://localhost:8080/users/atualizarRequisito",
         {
@@ -126,6 +128,7 @@ function atualizaRequisito(){
             body: JSON.stringify(
                 {
                     id: dadosAtualizacao.id,
+                    comentario: null,
                     status: dadosAtualizacao.status
                 }
             )

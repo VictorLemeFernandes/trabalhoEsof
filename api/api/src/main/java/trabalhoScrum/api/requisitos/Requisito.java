@@ -33,7 +33,7 @@ public class Requisito {
         this.status = dados.status();
     }
 
-        public void atualizarRequisitos(DadosAtualizacaoRequisitos dados) {
+    public void atualizarRequisitos(DadosAtualizacaoRequisitos dados) {
         if (dados.comentario() != null) {
             this.comentario = dados.comentario();
         }
