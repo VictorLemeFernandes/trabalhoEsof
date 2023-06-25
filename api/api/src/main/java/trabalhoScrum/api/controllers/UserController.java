@@ -8,6 +8,9 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import trabalhoScrum.api.dto.DadosAtualizacaoRequisitos;
+import trabalhoScrum.api.dto.DadosAtualizacaoUsuario;
 import trabalhoScrum.api.dto.DadosCadastroUsuario;
 import trabalhoScrum.api.requisitos.DadosCadastroRequisitos;
 import trabalhoScrum.api.requisitos.Requisito;
@@ -66,7 +69,6 @@ public class UserController {
     public ArrayList<Requisito> pegarRequisitos(@RequestParam long id) {
         var usr = repository.findById(id).get().getEmail();
         var tam = requisitoRepository.count();
-        System.out.println(tam);
         requisitoRepository.findAll();
         ArrayList <Requisito> retorno = new ArrayList<>();
         for(int i = 1; i <= tam;i++){
@@ -89,10 +91,18 @@ public class UserController {
         }
         return retorno;
     }
-//    @PutMapping
-//    @Transactional
-//    public void atualizar(@RequestBody @Valid DadosAtualizacaoUsuario dados){
-//        var usr = repository.findByEmail(dados.email());
-//        usr.get(0).atualizaDadosUsuario(dados);
-//    }
+
+    @Transactional
+    @PutMapping("/atualizarRequisito")
+    public void atualizar(@Valid @RequestBody DadosAtualizacaoRequisitos dados) {
+        var requisito = requisitoRepository.getReferenceById(dados.id());
+        requisito.atualizarRequisitos(dados);
+    }
+
+    @Transactional
+    @PutMapping("/atualizarUsuario")
+   public void atualizar(@RequestBody @Valid DadosAtualizacaoUsuario dados){
+       var usr = repository.findByEmail(dados.email());
+       usr.get(0).atualizaDadosUsuario(dados);
+   }
 }
