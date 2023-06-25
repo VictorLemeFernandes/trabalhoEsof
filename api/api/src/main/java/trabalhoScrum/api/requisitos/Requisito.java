@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import trabalhoScrum.api.dto.DadosAtualizacaoRequisitos;
+import trabalhoScrum.api.dto.DadosCadastroRequisitos;
 
 @Table(name = "requisitos")
 @Entity(name = "Requisito")
