@@ -81,10 +81,12 @@ function pegarRequisitos(){
                     document.querySelector('ul').appendChild(node)
                 }
 
+                var divButtons = document.getElementById("div-buttons")
                 var btn = document.createElement("button")
+                btn.id = "atualizar-requisito"
                 btn.innerHTML = "Atualizar requisito"
                 btn.onclick = openModal1
-                node.appendChild(btn)
+                divButtons.appendChild(btn)
             }  
         })
         .catch(error => { console.error(error) })
