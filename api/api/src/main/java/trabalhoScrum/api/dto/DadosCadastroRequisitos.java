@@ -1,7 +1,8 @@
-package trabalhoScrum.api.requisitos;
+package trabalhoScrum.api.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import trabalhoScrum.api.requisitos.StatusRequisito;
 
 public record DadosCadastroRequisitos(
         @NotNull

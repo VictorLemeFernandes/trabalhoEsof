@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import trabalhoScrum.api.dto.DadosAtualizacaoRequisitos;
 import trabalhoScrum.api.dto.DadosAtualizacaoUsuario;
+import trabalhoScrum.api.dto.DadosCadastroRequisitos;
 import trabalhoScrum.api.dto.DadosCadastroUsuario;
-import trabalhoScrum.api.requisitos.DadosCadastroRequisitos;
 import trabalhoScrum.api.requisitos.Requisito;
 import trabalhoScrum.api.requisitos.RequisitoRepository;
 import trabalhoScrum.api.usuario.Cargo;
