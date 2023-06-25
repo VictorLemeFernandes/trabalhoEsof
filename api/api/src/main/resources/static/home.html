@@ -28,7 +28,7 @@
                     <textarea id="conteudo" name="conteudo" required></textarea>
 
                     <label for="status">Status:</label>
-                    <textarea id="status" name="status" required placeholder="INATIVO//ATIVO//FINALIZADO"></textarea>
+                    <input id="status" name="status" required placeholder="INATIVO//ATIVO//FINALIZADO"></input>
 
                     <button id="enviar-requisito" onclick="criarRequisitos()">Enviar</button>
                 </form>
@@ -36,13 +36,13 @@
             </div>
         </div>
         <div hidden="true" id="modal1" class="modal1">
-            <div class="modal-content">
+            <div class="modal-content2">
                 <span class="close" onclick="closeModal1()">&times;</span>
                 <h2 class="modal-header">Atualizar requisito</h2>
                 <form class="modal-form">
                     <label for="comentario">ID do requisito:</label>
                     <input type="text" id="id" name="id">
-                    
+
                     <label for="comentario">Comentario:</label>
                     <input type="text" id="comentario" name="comentario">
 
@@ -54,11 +54,16 @@
             </div>
         </div>
         <div id="requisitos">
-            <h1>Seus requisitos</h1>
-            <ul>
-            </ul>
+            <div id="requisitos-content">
+                <h1>Seus requisitos</h1>
+                <ul>
+                </ul>
 
-            <button><a href="index.html">voltar</a></button>
+                <div id="div-buttons">
+                    <button type="button" id="voltar" onclick="window.location.href='index.html'">Voltar</button>
+
+                </div>
+            </div>
         </div>
     </main>
 </body>
