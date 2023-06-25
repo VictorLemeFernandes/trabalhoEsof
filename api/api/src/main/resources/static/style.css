@@ -239,9 +239,9 @@
     font-size: 20px;
     font-weight: bold;
     border-radius: 8px;
-    transition: 0.5s;
-    border: 1px solid rgb(111, 111, 231);
-    width: 20%;
+    transition: 0.2s;
+    border: rgb(151, 59, 151) 2px solid;
+    width: auto;
     align-self: center;
     transition: 0.3s;
 }
@@ -288,6 +288,64 @@ li {
     font-weight: bold;
     border: rgb(151, 59, 151) 2px solid;
     margin-bottom: 1rem;
+    padding: 10px;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+li:hover {
+    background-color: rgb(145, 67, 145);
+    color: white;
+    cursor: pointer;
+    transform: scale(1.01);
+}
+
+#voltar {
+    font-weight: bold;
+    border: rgb(151, 59, 151) 2px solid;
+    width: auto;
+    background-color: offwhite;
+    padding: 5px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 8px;
+    transition: 0.2s;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+#voltar:hover {
+    color: white;
+    cursor: pointer;
+    transform: scale(1.05);
+    background-color: rgb(145, 67, 145);
+}
+
+#atualizar-requisito {
+    font-weight: bold;
+    border: rgb(151, 59, 151) 2px solid;
+    width: auto;
+    background-color: offwhite;
+    padding: 5px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 8px;
+    transition: 0.2s;
+    margin-top: 20px;
+}
+
+#atualizar-requisito:hover {
+    color: white;
+    cursor: pointer;
+    transform: scale(1.05);
+    background-color: rgb(145, 67, 145);
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-family: "Consolas";
+    font-weight: bold;
 }
 
 .modal1 {
